@@ -22,7 +22,7 @@ Apache allows APIs to download Tomcats, so we don't have to manually download To
 ![](images/tomcatPlaybook.png)
 
 * hosts: [tomcat] = hosts name where tasks needs to be performed via playbook **_/etc/ansible/hosts_**
-![](images/hosts.PNG)
+![](images/hosts.png)
 
 ### The overall structure looks like
 ![](images/pwd.png)
@@ -50,4 +50,4 @@ This is what resulted at Controlled machine(destination machine, where provision
 ![](images/vmOutput.png)
 
 checksumDB file at Controlled machine(destination machine, where provisioning is done).
-![](images/checksumDB.PNG) 
+![](images/checksumDB.png) 
