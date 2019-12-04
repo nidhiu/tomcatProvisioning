@@ -26,6 +26,7 @@ Apache allows APIs to download Tomcats, so we don't have to manually download To
 
 ### The overall structure looks like
 ![](images/pwd.png)
+
 and
 ![](images/whatsRequired.png)
 ```
