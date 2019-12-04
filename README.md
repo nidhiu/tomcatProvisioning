@@ -9,7 +9,7 @@ Apache allows APIs to download Tomcats, so we don't have to manually download To
  
 
 >- Source(control machine) and Destination location(controlled machines) of Tomcats should be defined in variables file at **_/group_vars/all.yaml_**
->- Ansible module copies the Tomcats tarball from control to controlled machine, make a sha256 for tarball in file named as checksumDB at **_/Tomcat_Destination/checksumDB_** 
+>- Ansible module copies the Tomcats tarball from control to controlled machine, make a sha256 for tarball in file named as checksumDB at **_/Tomcat_Destination(usr/local/tomcat)/checksumDB_** 
 >- We are not deleting the tarball to make ansible not copy the same tomcat tarball again.
 
 <br/>
@@ -49,7 +49,7 @@ Where
 ![](images/howToRun.gif)
 
 This is what resulted at Controlled machine(destination machine, where provisioning is done).
-![](images/vmOutput.png)
+![](images/vmOutput.PNG)
 
 checksumDB file at Controlled machine(destination machine, where provisioning is done).
-![](images/checksumDB.png) 
+![](images/checksumDB.PNG) 
