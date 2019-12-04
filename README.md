@@ -1,5 +1,5 @@
 # tomcatProvisioning
-###Tomcats from Apache website to machines defined in the host-inventory file. 
+###**Tomcats from Apache website to virtual machines defined in the host-inventory file.**
 
 ----
 
@@ -17,6 +17,17 @@ Apache allows APIs to download Tomcats, so we don't have to manually download To
 * [tomcat] = host name for deploying Tomcat's to IPs given in hosts inventory file.
 * tarURL = name of the tarball downloaded from the web.
 ![](images/tomcatArchiveList.png)
-* tomcat = role name for playing included tomcat playbook **_/roles/tomcat/tasks/main.yml_**
 
+* role: tomcat = role name for playing included tomcat playbook **_/roles/tomcat/tasks/main.yml_**
 ![](images/tomcatPlaybook.png)
+
+* hosts: [tomcat] = hosts name where tasks needs to be performed via playbook **_/etc/ansible/hosts_**
+![](images/hosts.PNG)
+
+```
+How to run playbook
+
+ansible-playbook tomcatPlaybook.yaml -K
+```
+Where
+```-k``` = ask for privilege escalation password.
