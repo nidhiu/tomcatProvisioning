@@ -25,11 +25,17 @@ Apache allows APIs to download Tomcats, so we don't have to manually download To
 ![](images/hosts.PNG)
 
 # How to run playbook
-----
 
 ```
 ansible-playbook tomcatPlaybook.yaml -K
 ```
 Where
 ```-k``` = ask for privilege escalation password.
+
+```
 ![](images/howToRun.gif)
+```
+This is what resulted at Controlled machine(destination machine, where provisioning is done).
+![](images/vmOutput.PNG)
+checksumDB file at Controlled machine(destination machine, where provisioning is done).
+![](images/checksumDB.PNG)
