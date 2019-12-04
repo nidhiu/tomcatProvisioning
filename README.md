@@ -28,6 +28,7 @@ Apache allows APIs to download Tomcats, so we don't have to manually download To
 ![](images/pwd.png)
 
 and
+
 ![](images/whatsRequired.png)
 ```
 file: tomcatPlaybook.yaml
