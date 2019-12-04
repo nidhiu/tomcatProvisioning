@@ -1,5 +1,5 @@
 # tomcatProvisioning
-Tomcats from Apache website to virtual machines defined in the host-inventory file.
+Tomcats from Apache website to virtual machines defined in the host-inventory file using ansible.
 
 ----
 
