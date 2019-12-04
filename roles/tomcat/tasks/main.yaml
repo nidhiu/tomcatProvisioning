@@ -1,0 +1,59 @@
+  - name: make directory /usr/local/tomcat
+    file: path=/usr/local/tomcat state=directory
+    become: true
+
+  - name: create checksum storage file at /usr/local/tomcat/checksumDB
+    copy:
+      dest: /usr/local/tomcat/checksumDB
+      force: no
+      content: ""
+    become: yes
+
+  - name: copy from {{ tarUrl }} to remote machine
+    get_url:
+      url: "{{ tarUrl }}"
+      dest: "{{ tomcatDest }}"
+    register: copy
+    become: yes
+
+  - name: create 256checksum for the file
+    stat:
+       checksum_algorithm: sha256
+       get_checksum: yes
+       path: "{{ copy.dest }}"
+    register: result
+    when: copy.changed == true
+    become: yes
+
+  - name: Unpack archive for "{{ copy.dest }}"
+    unarchive:
+        copy: no
+        owner: root
+        group: root
+        src: "{{ copy.dest }}"
+        dest: "{{ tomcatDest }}"
+        list_files: yes
+        extra_opts:
+          - --transform
+          - s/^xxx/yyy/
+    register: unarchive
+    when: copy.changed == true
+    become: true
+
+  - name: copy checksum256 in file checksumDB at /usr/local/tomcat/checksumDB
+    lineinfile: create=yes regexp="NONEXISTENTLINE" dest=/usr/local/tomcat/checksumDB line="{{ result.stat.checksum + '   ' + unarchive.files[0] }}" state=present
+    when: copy.changed == true
+    become: yes
+
+  - name: format checksumDB file
+    shell: sed -e 's/[/B].*$//' {{ tomcatDest }}checksumDB >> {{ tomcatDest }}temp ; mv {{ tomcatDest }}temp  {{ tomcatDest }}checksumDB
+    when: copy.changed == true
+    become: yes
+
+   #unpack, create checksum and storing in file are dependednt on copy module, so don't remove tarball
+#  - name: removing Tarball for "{{ copy.dest }}"
+#    file:
+#       path: "{{ copy.dest }}"
+#       state: absent
+#    when: copy.changed == true
+#    become: true
