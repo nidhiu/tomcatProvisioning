@@ -1,5 +1,5 @@
 # tomcatProvisioning
-###**Tomcats from Apache website to virtual machines defined in the host-inventory file.**
+Tomcats from Apache website to virtual machines defined in the host-inventory file.
 
 ----
 
@@ -24,9 +24,9 @@ Apache allows APIs to download Tomcats, so we don't have to manually download To
 * hosts: [tomcat] = hosts name where tasks needs to be performed via playbook **_/etc/ansible/hosts_**
 ![](images/hosts.PNG)
 
-```
 How to run playbook
 
+```
 ansible-playbook tomcatPlaybook.yaml -K
 ```
 Where
